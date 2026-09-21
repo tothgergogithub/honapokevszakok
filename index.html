@@ -6,6 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="main.js"></script>
+  
+    <label>Írj be ide egy hónapot</label>
+    <input type="text" id="honap">
+    <button onclick="honapfuggveny()">Kattintás</button>
+    <p id="eredmenyhonap"></p>
+    <p id="eredmenyevszak"></p>
+    <p id="eredmenynap"></p>
+    <p id="unnepnap"></p>
+    <p id="hiba"></p>
+    
+    <div id="honapmod">
+    <label>Írj be ide egy másik hónapot</label>
+    <input type="text" id="honapmodosit">
+    <button onclick="modosithonap()">Kattintás</button> <br> <br>
+    </div>
+    <div id="unnepmod">
+    <label>Írj be ide egy ünnepet, amit módosítanál</label>
+    <input type="text" id="unnepmodosit">
+    <button onclick="modositunnep()">Kattintás</button>
+    <p id="modositunnep"></p>
+    </div>
+
+      <script src="main.js"></script>
 </body>
 </html>
