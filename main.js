@@ -68,26 +68,29 @@ let honapok=[
 
 
 
-function honapbekeres(honapszam){
-    let elem=honapok[honapszam-1];
-    console.log(elem)
-    return elem
-    
-}
-try{
-    const beker=prompt("írj be egy számot")
-    if(honapszam<1|| honapszam>12){
-        throw new Error("Hibás számot adtál meg")
-    }
-    if(isNaN(honapszam)){
-        throw new Error("Nem számot adtál meg")
-    }
-    else{
-        const honap=honapbekeres(honapszam);
-        console.log("Hónap", honap.honap)
+function honapAdatok(honapszam) {
+    if (honapszam < 1 || honapszam > 12) {
+        throw new Error("A hónapszámnak 1 és 12 közé kell esnie!");
     }
 
+    return honapok[honapszam - 1];
 }
-catch(e){
-    console.log("Hiba")
+
+try {
+    const bemenet = prompt("Adj meg egy hónapszámot (1-12):");
+
+    const honapszam = Number(bemenet);
+
+    if (Number.isNaN(honapszam)) {
+        throw new Error("Nem számot adtál meg!");
+    }
+
+    const honap = honapAdatok(honapszam);
+
+    console.log("Hónap:", honap.honap);
+    console.log("Évszak:", honap.evszak);
+    console.log("Napok száma:", honap.nap);
+
+} catch (hiba) {
+    console.log("Hiba:", hiba.message);
 }
