@@ -20,7 +20,7 @@ let honapok=[
     honap: "Március",
     evszak: "Tavasz",
     nap: 31,
-    unnep:"Nincs ünnep"
+    unnep:"Március 15"
     },
     {
     honap: "Április",
@@ -74,19 +74,29 @@ let honapok=[
         honap:"December",
         evszak:"Tél",
         nap: 31,
-        unnep: "karacsony"
+        unnep: "Karácsony"
     }
 ]
-document.getElementById("honapmod").style.visibility="hidden"
-document.getElementById("unnepmod").style.visibility="hidden"
-function honapAdatok(honapszam) {
-   
 
+document.getElementById("unnepmod").style.visibility="hidden"
+
+let akutalishonap=null;
+function modositunnep()
+{
+    const ujUnnep = document.getElementById("unnepmodosit").value;
+    honapok[aktualishonap].unnep = ujUnnep;
+    document.getElementById("unnepnap").innerHTML =
+        honapok[aktualishonap].unnep;
+    
+    
+}
+
+function honapAdatok(honapszam) {
     return honapok[honapszam - 1];
 }
 function honapfuggveny(){
 try {
-  //  const bemenet = document.getElementById("katt").innerHTML = "írj be egy számot"
+ 
     const honapszam = Number(document.getElementById("honap").value);
     document.getElementById("hiba").innerHTML = ""
        document.getElementById("eredmenyhonap").innerHTML = ""
@@ -101,14 +111,14 @@ try {
     if (Number.isNaN(honapszam)) {
         throw new Error("Nem számot adtál meg!");
     }
-
+    aktualishonap = honapszam - 1;
     const honap = honapAdatok(honapszam);
-   
+    
     document.getElementById("eredmenyhonap").innerHTML = "Hónap:" + honap.honap
     eredmenyevszak.innerHTML = "Évszak:" + honap.evszak
     eredmenynap.innerHTML = "Napok száma:" + honap.nap
     unnepnap.innerHTML=honap.unnep
-    document.getElementById("honapmod").style.visibility="visible"
+    document.getElementById("unnepmod").style.visibility="visible"
 
 } catch (hiba) {
    document.getElementById("hiba").innerHTML = "Hiba:" + hiba.message;
